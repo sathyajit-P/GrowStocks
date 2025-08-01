@@ -21,10 +21,10 @@ const connectDB = async () => {
 };
 
 // Middleware - ensure express.json() is loaded before routes
-app.use(express.json());
-app.use(cors({origin:"http://localhost:5173",credentials:true}));
-app.use(cookieParser());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.json());                                           // parses incoming JSON requests and puts the parsed data in req.body
+app.use(cors({origin:"http://localhost:5173",credentials:true}));  // Enables Cross-Origin Resource Sharing (CORS) so that a frontend app can make requests to this backend.
+app.use(cookieParser());   // Parses Cookie headers and makes them available as an object via req.cookies.
+app.use(bodyParser.urlencoded({ extended: true }));  
 
 // Route setup after middleware
 app.use("/api/auth", auth);
